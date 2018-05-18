@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd 
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+	http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+	<!-- 包扫描器，扫描带@Service注解的类 -->
+	<context:component-scan base-package="com.ich.*.service"></context:component-scan>
+
+	<bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">
+		<property name="maxIdle" value="${redis.maxIdle}" />
+		<property name="maxTotal" value="${redis.maxActive}" />
+		<property name="maxWaitMillis" value="${redis.maxWait}" />
+		<property name="testOnBorrow" value="${redis.testOnBorrow}" />
+	</bean>
+	<!-- 配置redis客户端单机版 -->
+	<bean id="jedispool" class="redis.clients.jedis.JedisPool">
+		<constructor-arg name="poolConfig" ref="poolConfig"></constructor-arg>
+		<constructor-arg name="host" value="${redis.host}"></constructor-arg>
+		<constructor-arg name="port" value="${redis.port}"></constructor-arg>
+		<constructor-arg name="password" value="${redis.pass}"></constructor-arg>
+		<constructor-arg name="timeout" value="${redis.timeout}"></constructor-arg>
+		<constructor-arg name="database" value="${redis.default.db}"></constructor-arg>
+	</bean>
+	<bean id="jedisClientSingle" class="com.ich.core.plug.jedis.impl.JedisClientSingle" />
+
+ 	<task:annotation-driven />
+	<!--
+ 	<task:scheduled-tasks>
+    	<task:scheduled ref="autoDataServiceImpl" method="autoAddData" cron="0/10 * * * * ?" />
+    </task:scheduled-tasks>
+    -->
+
+	<!-- 配置日志的数据回调实现 -->
+	<bean id="callbackservice" class="com.ich.log.service.impl.ILogCallbackServiceImpl"></bean>
+	<!-- 本地语言替换实现 -->
+	<bean id="internationalservice" class="com.ich.international.service.impl.InternationalCallbackServiceImpl"></bean>
+	<!-- 注册数据回调项 -->
+	<bean class="com.ich.core.http.service.impl.CoreServiceImpl">
+		<property name="backList">
+			<list>
+				<ref bean="internationalservice"></ref>
+				<ref bean="callbackservice"></ref>
+			</list>
+		</property>
+	</bean>
+</beans>

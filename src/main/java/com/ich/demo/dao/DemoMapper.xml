@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ich.demo.dao.DemoMapper">
+	
+	<select id="selectById"  resultType="com.ich.demo.pojo.DemoTest" parameterType="Long">
+		SELECT *
+		FROM ich_demo_test
+		WHERE id = #{id}
+	</select>
+
+	<!-- 使用主键自增的方式：系统会忽略实体参数中的ID参数，并向中写入本次插入ID的值。因此需要注意这种方式的数据新增不会出现主键重复，多次运行会导致多次新增 -->
+	<insert id="insertDemo" useGeneratedKeys="true" keyProperty="id" parameterType="com.ich.demo.pojo.DemoTest">
+		INSERT INTO ich_demo_test(name,age,birthday,state,balance,info)
+		VALUES(#{name},#{age},#{birthday},#{state},#{balance},#{info})
+	</insert>
+
+	<select id="selectByAdminExample" resultType="map" >
+		SELECT * FROM ich_demo_test
+	</select>
+	
+</mapper>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ich.system.dao.FeedbackAMapper">
+	
+	<select id="selectByExample"  resultType="map" parameterType="map">
+		SELECT w.*, e.handleresult, e.handletime ,e.handlername , e.handlermark FROM ich_ext_feedback w
+		LEFT JOIN (SELECT * FROM ich_ext_examine WHERE source = #{source}) e ON w.id = e.sourceid
+		<if test="searchkey!=null and searchkey!=''"> WHERE (w.username like '%${searchkey}%' OR w.contact like '%${searchkey}%')</if>
+		ORDER BY w.status  ASC
+	</select>
+
+	
+</mapper>

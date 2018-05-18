@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ich.system.dao.IWitnessesAMapper">
+	
+	<select id="selectByExample"  resultType="map" parameterType="map">
+		SELECT w.*, e.handleresult,e.handlername , e.handlermark FROM ich_ext_witnesses w
+		LEFT JOIN (SELECT * FROM ich_ext_examine WHERE source = #{source}) e ON w.id = e.sourceid
+		WHERE 1 = 1
+		<if test="status!=null"> AND w.status = #{status} </if>
+		<if test="wid!=null and wid!=''"> AND w.wid = #{wid} </if>
+		<if test="wname!=null and wname!=''"> AND w.wname like '%${wname}%'</if>
+		ORDER BY w.status ,w.wid ASC
+	</select>
+
+	
+</mapper>

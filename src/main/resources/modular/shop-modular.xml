@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	modular<系统模块信息>
+	name：模块名称
+	code：模块唯一编码；命名规则：<公司代码>-<模块代码>
+	version：模块版本号
+ -->
+<modular name="店铺端" code="shop" version="1.01b">
+    <catalog name="账户管理" code="ich-shop-account" sequence="98">
+        <menu name="管理" code="shop-account-index" view="ich/org/employeeIndex" />
+    </catalog>
+</modular>

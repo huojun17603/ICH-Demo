@@ -1,0 +1,115 @@
+@charset "utf-8";
+ul,li{list-style: none}
+/** 首页样式 */
+.homeBox{position: relative;margin: 0;font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;font-size: 12px;line-height: 20px;color: #333333;background: #262626;}
+.homeDivBox{padding:15px;webkit-box-sizing: border-box;box-sizing: border-box;background-color: #fff;}
+.homeDivBorder{background: #fafafa;border: 1px solid #cfcfcf;clear: both;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;display: block;}
+.homeDivHead{border-radius: 2px 2px 0 0;border-bottom: 1px solid #cfcfcf;height: 42px;padding: 0 15px;line-height: 42px;background-color: #e8e8e8;}
+.homeDivBody{border-radius: 0 0 2px 2px;padding: 15px;border-bottom: 1px solid #b3b3b3;}
+
+/* 搜索条件表单样式 */
+div,ul,li{padding: 0; margin: 0;}
+.gongn_p{background:#fff; border-bottom: 1px solid #e8e8e8; padding:12px 0; text-align: center;}
+.gongn_p a{ margin: 0px 16px;}
+.sgtz{border: 0px solid #e32600; overflow: hidden; padding-top: 12px;}
+.sgtz li{padding:8px 0px 8px 0px; float:left; list-style: none; }
+.sgtz_two{ width:468px; }
+.sgtz_one{width:233px;}
+.sgtz_one input{width:100px; }
+.sgtz_two input{width:145px; }
+.sgtz_one select{width:100px; }
+.sgtz_two select{width:145px; }
+.sgtz li label{ text-align: right;  width:100px; display: inline-block;}
+.sgtz_atn{ margin:12px 0px 12px 5px;}
+
+.sgtz_center{text-align: center;margin-top: 15px;}
+
+
+
+/* 新增修改表单标准样式 */
+/* 给出4位汉字空间 */
+.fm_s {border: 0px solid #e32600; overflow: hidden; padding-top: 12px;}
+.fm_s li{padding:8px 0px 8px 0px; float:left; list-style: none; }
+.fm_s li label { text-align: right;  width:100px; display: inline-block;}
+/* 给出6位汉字空间 */
+.fm_m {border: 0px solid #e32600; overflow: hidden; padding-top: 12px;}
+.fm_m li{padding:8px 0px 8px 0px; float:left; list-style: none; }
+.fm_m li label { text-align: right;  width:140px; display: inline-block;}
+/* 给出8位汉字空间 */
+.fm_l {border: 0px solid #e32600; overflow: hidden; padding-top: 12px;}
+.fm_l li{padding:8px 0px 8px 0px; float:left; list-style: none; }
+.fm_l li label { text-align: right;  width:180px; display: inline-block;}
+
+/*一列一个Input*/
+.fm_1l{width:100%;}
+/*一列两个Input*/
+.fm_2l{width:50%;}
+/*一列三个Input*/
+.fm_3l{width:33%;}
+/*一列四个Input*/
+.fm_4l{width:25%;}
+
+.gd{color: green;font-weight: bold;}
+.rd{color: red;font-weight: bold;}
+.bd{color: blue;font-weight: bold;}
+.grd{color: gray;font-weight: bold;}
+
+/*窗口布局*/
+.htl {font-size: 12px;font-weight: bold;color:#999;}
+/*一般统计*/
+.hmd {background: #fafafa;border: 1px solid #cfcfcf;clear: both;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;display: inline-block;width: 160px;margin-right: 10px;margin-bottom:  10px;padding: 5px;}
+.hm2d {display: inline-block;margin-right: 10px;padding: 5px;}
+
+.hmd .ky {margin: 5px;color:#999;}
+.hmd .sp {margin: 5px;color:#999;}
+.hmd .vl {margin: 5px;font-size: 24px;font-weight: bold;}
+
+input{
+    outline:none;
+}
+.vipt{
+    font-size: 12px;
+    margin: 0px;
+    padding: 4px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    height: 24px;
+    line-height: 22px;
+    width: 173px;
+}
+.vipt:focus{
+    border-color: #bbbbbb;
+    -moz-box-shadow: 0 0 3px 0 #D4D4D4;
+    -webkit-box-shadow: 0 0 3px 0 #D4D4D4;
+    box-shadow: 0 0 3px 0 #D4D4D4;
+}
+
+/**裁剪器样式**/
+.jcrop-box{
+    padding: 6px;
+    border: 1px rgba(0,0,0,.4) solid;
+    background-color: white;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    -webkit-box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);
+}
+.jcrop-div{
+    width:512px;/*控件宽度，因与动态生成的JCROP一致*/
+    height:384px;/*控件高度，因与动态生成的JCROP一致*/
+}
+#preview-pane {
+    display: block;
+    position: absolute;
+    z-index: 2000;
+    top: 35px;
+    left: 550px;
+}
+#preview-pane .preview-container {
+    width: 120px;  /*截图预览宽度，因与动态生成的JCROP最小截图宽度一致*/
+    height: 120px;  /*截图预览宽度，因与动态生成的JCROP最小截图高度一致*/
+    overflow: hidden;
+}
+

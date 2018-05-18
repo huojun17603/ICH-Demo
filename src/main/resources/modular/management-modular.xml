@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	modular<系统模块信息>
+	name：模块名称
+	code：模块唯一编码；命名规则：<公司代码>-<模块代码>
+	version：模块版本号
+ -->
+<modular name="运营管理平台" code="ICH-ADMIN" version="1.01b">
+
+    <catalog name="客服" code="admin-customer-service" sequence="20">
+        <menu name="举报管理" code="admin-customer-service-witnesses" view="admin/system/witnessesIndex" />
+        <menu name="反馈管理" code="admin-customer-service-feedback" view="admin/system/feedbackIndex" />
+    </catalog>
+
+    <catalog name="内容管理" code="admin-context" sequence="99">
+        <menu name="公告管理" code="admin-context-inform-index" view="admin/context/informIndex" />
+        <menu name="文章管理" code="admin-context-notice-index" view="admin/context/noticeIndex" />
+        <menu name="广告管理" code="admin-context-adv-index" view="admin/context/advIndex" />
+        <menu name="内容监控" code="admin-context-monitor-index" view="admin/context/monitorIndex" />
+        <menu name="文章分类管理" code="admin-context-noteclass-index" view="admin/context/noteclassIndex" />
+    </catalog>
+
+    <catalog name="系统配置" code="admin-system" sequence="99">
+        <menu name="系统参数" code="admin-system-config" view="admin/system/configIndex" />
+        <menu name="系统版本管理" code="admin-system-versionapp" view="admin/system/versionappIndex" />
+        <menu name="公共类目管理" code="admin-system-category" view="admin/system/categoryIndex" />
+    </catalog>
+
+    <catalog name="字典管理" code="admin-dictionary" sequence="98">
+        <menu name="银行管理" code="admin-bank-index" view="admin/dictionary/bankIndex" />
+        <menu name="区域管理" code="admin-address-index" view="admin/dictionary/addressIndex" />
+    </catalog>
+
+    <catalog name="员工账户管理" code="admin-employee" sequence="98">
+        <menu name="员工管理" code="admin-employee-index" view="admin/employee/employeeIndex" />
+        <menu name="组织机构管理" code="admin-organization-index" view="admin/employee/organizationIndex" />
+        <menu name="职位权限管理" code="admin-position-index" view="admin/employee/positionIndex" />
+    </catalog>
+
+    <catalog name="Spring学习实例" code="spring-cache" sequence="0">
+        <menu name="Spring-Cache" code="spring-cache-index" view="spring/cache/index" />
+        <menu name="Spring-Atomikos" code="spring-jta-atomikos-index" view="spring/atomikos/index" />
+    </catalog>
+</modular>
