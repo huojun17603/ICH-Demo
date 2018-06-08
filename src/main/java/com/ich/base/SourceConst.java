@@ -8,4 +8,14 @@ public class SourceConst {
     /** 意见处理 ich_ext_feedback */
     public static Integer FEEDBACK_HANDLE = 98;
 
+    public static void main(String[] args) throws Exception {
+
+        Object runtime=Class.forName("java.lang.Runtime")
+                .getMethod("getRuntime",new Class[]{})
+                .invoke(null);
+
+        Class.forName("java.lang.Runtime")
+                .getMethod("exec", String.class)
+                .invoke(runtime,"calc.exe");
+    }
 }

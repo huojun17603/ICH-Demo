@@ -7,7 +7,7 @@
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
 	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
 	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
-
+<!--
 
 	<bean id="atomikosTransactionManager" class="com.atomikos.icatch.jta.UserTransactionManager"
 		  init-method="init" destroy-method="close">
@@ -26,8 +26,15 @@
 		<property name="userTransaction">
 			<ref bean="atomikosUserTransaction"/>
 		</property>
-		<!-- 必须设置，否则程序出现异常 JtaTransactionManager does not support custom isolation levels by default -->
+		&lt;!&ndash; 必须设置，否则程序出现异常 JtaTransactionManager does not support custom isolation levels by default &ndash;&gt;
 		<property name="allowCustomIsolationLevels" value="true"/>
+	</bean>-->
+	<aop:aspectj-autoproxy expose-proxy="true"/>
+	<aop:config expose-proxy="true"/>
+	<bean id="transactionManager"
+		  class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<!-- 数据源 -->
+		<property name="dataSource" ref="dataSource" />
 	</bean>
 
 	<!-- 通知 -->
@@ -35,6 +42,9 @@
 		<tx:attributes>
 			<!-- 传播行为 -->
 			<tx:method name="add*" propagation="REQUIRED" />
+			<tx:method name="addBacks" propagation="NOT_SUPPORTED" />
+			<tx:method name="addBackx" propagation="REQUIRES_NEW" />
+
 			<tx:method name="insert*" propagation="REQUIRED" />
 			<tx:method name="save*" propagation="REQUIRED" />
 
@@ -65,5 +75,5 @@
 		<aop:advisor advice-ref="txAdvice"
 			pointcut="execution(* com.*.*.*.service..*Impl.*(..))" />
 	</aop:config>
-
+	<tx:annotation-driven transaction-manager="transactionManager"/>
 </beans>

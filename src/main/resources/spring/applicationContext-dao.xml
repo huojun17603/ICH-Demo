@@ -12,31 +12,35 @@
 	<!-- 加载配置文件 -->
 	<context:property-placeholder location="classpath:properties/*.properties" />
 	<!-- 数据库连接池 -->
-<!--	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
 		destroy-method="close">
 		<property name="url" value="${jdbc.url}" />
 		<property name="username" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
 		<property name="driverClassName" value="${jdbc.driver}" />
-		<property name="maxActive" value="10" />
+		<property name="maxActive" value="50" />
 		<property name="minIdle" value="5" />
-	</bean>-->
+	</bean>
 
 	<!--让spring管理sqlsessionfactory 使用mybatis和spring整合包中的-->
-<!--   <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-       &lt;!&ndash; 数据库连接池 &ndash;&gt;
+   <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+       <!-- 数据库连接池 -->
 		<property name="dataSource" ref="dataSource" />
-		&lt;!&ndash; 加载mybatis的全局配置文件 &ndash;&gt;
+		<!-- 加载mybatis的全局配置文件 -->
 		<property name="configLocation" value="classpath:mybatis/SqlMapConfig.xml" />
-	</bean>-->
+	</bean>
 
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+		<property name="basePackage" value="com.ich.*.dao,com.uu.*.mapper" />
+	</bean>
 
+<!--
 
-
-	<!-- 配置数据库A -->
+	&lt;!&ndash; 配置数据库A &ndash;&gt;
 	<bean id="storeADataSource" class="com.atomikos.jdbc.nonxa.AtomikosNonXADataSourceBean">
 		<property name="uniqueResourceName" value="storeADB" />
-		<!-- value只要两个数据源不同就行，随便取名 -->
+		&lt;!&ndash; value只要两个数据源不同就行，随便取名 &ndash;&gt;
 		<property name="driverClassName">
 			<value>${sqlserver.jdbc.driver}</value>
 		</property>
@@ -50,21 +54,21 @@
 			<value>${sqlserver.jdbc.password}</value>
 		</property>
 	</bean>
-	<!-- 数据库A写入SessionFactory -->
+	&lt;!&ndash; 数据库A写入SessionFactory &ndash;&gt;
 	<bean id="sqlStoreASessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="storeADataSource" />
 		<property name="configLocation" value="classpath:mybatis/storeAConfig.xml" />
 	</bean>
-	<!-- 数据库A注入到Spring -->
+	&lt;!&ndash; 数据库A注入到Spring &ndash;&gt;
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="sqlSessionFactoryBeanName" value="sqlStoreASessionFactory" />
 		<property name="basePackage" value="com.uu.storea.mapper" />
 	</bean>
 
-	<!-- 配置数据库B -->
+	&lt;!&ndash; 配置数据库B &ndash;&gt;
 	<bean id="storeBDataSource" class="com.atomikos.jdbc.nonxa.AtomikosNonXADataSourceBean">
 		<property name="uniqueResourceName" value="storeBDB" />
-		<!-- value只要两个数据源不同就行，随便取名 -->
+		&lt;!&ndash; value只要两个数据源不同就行，随便取名 &ndash;&gt;
 		<property name="driverClassName">
 			<value>${mysql.jdbc.driver}</value>
 		</property>
@@ -77,9 +81,15 @@
 		<property name="password">
 			<value>${mysql.jdbc.password}</value>
 		</property>
+		<property name="minPoolSize">
+			<value>5</value>
+		</property>
+		<property name="maxPoolSize">
+			<value>10</value>
+		</property>
 	</bean>
 
-	<!-- 数据库B写入SessionFactory -->
+	&lt;!&ndash; 数据库B写入SessionFactory &ndash;&gt;
 	<bean id="sqlStoreBSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="storeBDataSource" />
 		<property name="configLocation" value="classpath:mybatis/storeBConfig.xml" />
@@ -90,7 +100,7 @@
 		<property name="basePackage" value="com.uu.storeb.mapper" />
 	</bean>
 
-	<!-- 配置数据库C -->
+	&lt;!&ndash; 配置数据库C &ndash;&gt;
 	<bean id="storeCDataSource" class="com.atomikos.jdbc.nonxa.AtomikosNonXADataSourceBean">
 		<property name="uniqueResourceName" value="storeCDB" />
 		<property name="driverClassName">
@@ -116,5 +126,6 @@
 		<property name="sqlSessionFactoryBeanName" value="sqlStoreCSessionFactory" />
 		<property name="basePackage" value="com.ich.*.dao" />
 	</bean>
+-->
 
 </beans>

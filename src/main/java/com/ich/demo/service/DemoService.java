@@ -3,6 +3,7 @@ package com.ich.demo.service;
 import com.ich.core.http.entity.HttpResponse;
 import com.ich.core.http.entity.PageView;
 import com.ich.demo.pojo.DemoTest;
+import com.ich.extend.pojo.IFeedback;
 
 import java.util.List;
 import java.util.Map;
@@ -40,4 +41,12 @@ public interface DemoService {
 
     HttpResponse addErrorDemoz(DemoTest demoTest);
 
+    HttpResponse addBack(String id);
+    HttpResponse addBacks(String id);
+    public HttpResponse addBackx(String id);
+    HttpResponse editBack(String id);
+
+    IFeedback findBack(String id);
+
+    HttpResponse tryBack(String id);
 }

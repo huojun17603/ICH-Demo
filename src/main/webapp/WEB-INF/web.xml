@@ -15,10 +15,10 @@
     <param-name>contextConfigLocation</param-name>
     <param-value>classpath:spring/applicationContext-*.xml</param-value>
   </context-param>
-  <listener>
+<!--  <listener>
     <description>eureka监听器</description>
     <listener-class> com.ich.demo.listener.SampleEurekaService</listener-class>
-  </listener>
+  </listener>-->
   <!-- 系统静态配置项ServletContext监听器 -->
   <listener>
     <listener-class>com.ich.core.listener.SystemConfigListener</listener-class>
