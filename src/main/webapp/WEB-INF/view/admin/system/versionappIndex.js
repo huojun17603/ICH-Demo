@@ -3,18 +3,18 @@ $(function(){
 		url:basePath + versionQueryUrl,
 		border:false,
 		striped:true,
-	    fit:true,
-	    pageSize:50,
-	    pageList:[50,100],
+	    fit:false,
+	    pageSize:20,
 	    idField:'id',
 	    loadMsg:'加载中……',
 	    rownumbers:true,//序号
 	    pagination:true,//显示底部分页工具栏
 	    singleSelect:true,//单选
-	    columns:[[
+        fitColumns:true,
+        columns:[[
 		          {field:'id',title:'id',hidden:true},
-				  {field:'appname',title:'应用名称',align:"center",width:150},
-		          {field:'equipment',title:'设备类型',align:"center",width:100,
+				  {field:'appname',title:'应用名称',align:"center",width:200},
+		          {field:'equipment',title:'设备类型',align:"center",width:150,
 		        	  formatter: function(value,row,index){
 		        		  switch (value) {
 							case "android":return "安卓";
@@ -24,19 +24,19 @@ $(function(){
 						}
 		        	  }
 		          },
-		          {field:'version',title:'版本号',align:"center",width:100},
-			      {field:'force',title:'强制更新',align:"center",width:100,
+		          {field:'version',title:'版本号',align:"center",width:150},
+			      {field:'force',title:'强制更新',align:"center",width:150,
 						formatter: function(value,row,index){
 							return value?"是":"否";
 						}
 				   },
-		          {field:'http',title:'下载地址',align:"center",width:200,
+		          {field:'http',title:'下载地址',align:"center",width:350,
 		        	  formatter: function(value,row,index){
 							return "<a href='"+value+"' target='_blank'>"+value+"</a>";
 		        	  }
 		          },
-		          {field:'filezise',title:'文件大小（KB）',align:"center",width:100},
-		          {field:'status',title:'状态',align:"center",width:100,
+		          {field:'filezise',title:'文件大小（KB）',align:"center",width:150},
+		          {field:'status',title:'状态',align:"center",width:200,
 		        	  formatter: function(value,row,index){
 		        		  switch (value) {
 							case 1:return "待发布";
@@ -61,10 +61,13 @@ $(function(){
 		toolbar:'#tool',
 		onLoadSuccess:function(){
 			$("#datagrid").datagrid('scrollTo',0);
-            initPermissionButton();
+            scrollTo(0,0);
 		}
 	});
-	
+    var pager = $('#datagrid').datagrid('getPager');    // get the pager of datagrid
+    pager.pagination({
+        layout:['first','prev','links','next','last']
+    });
 	$("#sk_equipment").combobox({
 		editable:false,
 		width:120,

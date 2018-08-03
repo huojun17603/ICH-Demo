@@ -26,6 +26,46 @@
 		#header .nav .selected ul {display:block;}
 		.tree-icon {width: 0px;}
    	</style>
+		<style type="text/css">
+			.nav_top{
+				padding-left: 35px;
+				height: 40px;
+				background-color: #ffffff;
+				line-height: 40px;
+				font-size: 14px;
+				font-weight: bold;
+				color: #777;
+				border-width: 0 0 1px;
+				border-bottom-color: #d4d4d4;
+				border-style: solid;
+				position: relative;
+			}
+
+			.tree li{
+				white-space: nowrap;
+				padding-left: 20px;
+			}
+
+			.tree-node{
+				height: 22px;
+				white-space: nowrap;
+				cursor: pointer;
+			}
+
+			.tree-title {
+				font-size: 14px;
+				display: inline-block;
+				text-decoration: none;
+				vertical-align: top;
+				white-space: nowrap;
+				padding: 0 2px;
+				height: 20px;
+				line-height: 20px;
+			}
+			.panel-title{
+				padding-left: 30px;
+			}
+		</style>
  	</head>
  	<script type="text/javascript">
  		var userMenuList = "admin/employeeMenus";
@@ -46,64 +86,36 @@
 					<p style="color:#999;">${sessionScope.SESSION_ADMIN_NAME}</p>
 				</div>
 				<ul class="nav">
-					<li><a href="javascript:void(0)" onclick="openEditWin()">修改密码</a></li>
+					<li><a href="javascript:void(0)" onclick="openEditWinx()">修改密码</a></li>
 					<li><a href="<%=basePath %>admin/loginout" >安全退出</a></li>
 				</ul>
 			</div>
 			</div>
 	    </div>
 	    
-	    <div data-options="region:'west'" style="width:200px;">
-	    	<div style="width:100%;height:30px;background-color: #e8e8e8;text-align: center;line-height: 30px;">导航菜单</div>
+	    <div data-options="region:'west'" style="width:230px;background-color: #ffffff">
+	    	<div class="nav_top">
+				<div class="panel-icon icon-more"></div>
+				<a onclick="alert()">首页</a>
+
+			</div>
 	    	<div id="ac" class="easyui-accordion" data-options="border:false">
 	    		<div title="因技术问题导致的权宜之计" data-options="" style="overflow:auto;padding:10px;"></div>
 	    		<c:forEach items="${topMenu}" var="item" varStatus="i">
-	    			<div title="${item.name}" style="overflow:auto;padding:10px;">
+	    			<div title="${item.name}"  style="overflow:auto;padding:10px;" data-options="iconCls:'${item.icon}'">
 	    				<input id="menuId_${i.index}" type="hidden" value="${item.code}" >
 	    				<ul id="user_menu_${i.index}"></ul>
 	    			</div>
 	    		</c:forEach>
 			</div>
 	    </div>
-	    <div data-options="region:'south'" style="height:40px;padding:10px; text-align:center;">
+	<%--    <div data-options="region:'south'" style="height:40px;padding:10px; text-align:center;">
 			Copyright©<%=SystemConfig.getParams("ADMIN_HOME_TAG")%>；All Rights Reserved
-		</div>
-	    <div data-options="region:'center'" style="background-color: #e8e8e8">
-	    	<div id="home_tabs" class="easyui-tabs" data-options="fit:true,border:false,plain:true">
-				<div title="首页">
-					<div id="home_context" class="homeBox" style="width: 100%;">
-						<div id="home_l" style="width: 50%;float:left;">
-							<c:forEach items="${topWindow}" var="item" varStatus="i">
-							<c:if test="${i.index%2==0}">
-								<jsp:include page="${item.include}" />
-							</c:if>
-							</c:forEach>
-						</div>
-						<div id="home_r" style="width: 50%;float:left;">
-							<c:forEach items="${topWindow}" var="item" varStatus="i">
-							<c:if test="${i.index%2==1}">
-								<jsp:include page="${item.include}" />
-							</c:if>	
-							</c:forEach>
-						</div>
-						<!-- 读取窗口内容 -->
-						<%-- <c:forEach items="${topWindow}" var="item" varStatus="i">
-							<jsp:include page="${item.include}" />
-						</c:forEach>  --%>
-					</div>
-				</div>
-			</div>
+		</div>--%>
+	    <div id="home_panel" data-options="region:'center'" style="background-color: #e8e8e8">
+
 	    </div>
-	    
-	    <!-- Tabs 右键菜单目录 -->
-	    <div id="menu" class="easyui-menu" style="width:150px;">
-	    	<div class="menu-sep"></div>
-	   	    <div id="m-closeall">全部关闭</div>
-	    	<div id="m-closeother">除此之外全部关闭</div>
-	    	<div class="menu-sep"></div>
-	    	<div id="m-close">关闭</div>
-		</div>
-		
+
 		<div id="edit_window" class="easyui-window" title="修改密码" 
 		data-options="modal:true,collapsible:false,minimizable:false,maximizable:false,resizable:false,closable:false,closed:true" 
 		style="width:400px;height:250px;padding:10px;">

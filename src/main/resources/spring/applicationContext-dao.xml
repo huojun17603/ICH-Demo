@@ -11,7 +11,7 @@
 	<!-- 数据库连接池 -->
 	<!-- 加载配置文件 -->
 	<context:property-placeholder location="classpath:properties/*.properties" />
-	<!-- 数据库连接池 -->
+	 <!--数据库连接池-->
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
 		destroy-method="close">
 		<property name="url" value="${jdbc.url}" />
@@ -35,9 +35,8 @@
 		<property name="basePackage" value="com.ich.*.dao,com.uu.*.mapper" />
 	</bean>
 
-<!--
 
-	&lt;!&ndash; 配置数据库A &ndash;&gt;
+	<!--&lt;!&ndash; 配置数据库A &ndash;&gt;
 	<bean id="storeADataSource" class="com.atomikos.jdbc.nonxa.AtomikosNonXADataSourceBean">
 		<property name="uniqueResourceName" value="storeADB" />
 		&lt;!&ndash; value只要两个数据源不同就行，随便取名 &ndash;&gt;
@@ -125,7 +124,6 @@
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="sqlSessionFactoryBeanName" value="sqlStoreCSessionFactory" />
 		<property name="basePackage" value="com.ich.*.dao" />
-	</bean>
--->
+	</bean>-->
 
 </beans>

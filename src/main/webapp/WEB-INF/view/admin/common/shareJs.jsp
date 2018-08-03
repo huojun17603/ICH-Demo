@@ -6,7 +6,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <link rel="stylesheet" type="text/css" href="<%=basePath%>script/easyui/themes/icon.css">
 <link rel="stylesheet" type="text/css" href="<%=basePath%>script/easyui/themes/color.css">
-<link rel="stylesheet" type="text/css" href="<%=basePath%>script/easyui/themes/bootstrap/easyui.css">
+<link rel="stylesheet" type="text/css" href="<%=basePath%>script/easyui/themes/bootstrapx/easyui.css">
 <!-- 注意定义的先后顺序 -->
 <link rel="stylesheet" type="text/css" href="<%=basePath%>css/index.css">
 <script type="text/javascript" src="<%=basePath%>script/common/jquery.min.js"></script>

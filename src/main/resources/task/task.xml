@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<server name="" ip="" remark="" >
-    <task code="" warnstamp="1" ></task>
+<server>
+    <task servercode="" warnstamp="1" repeat="true" ></task>
 </server>
 

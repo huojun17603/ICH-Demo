@@ -11,37 +11,58 @@
 	<meta http-equiv="expires" content="0">
 	<jsp:include page="../common/shareJs.jsp" />
 	<script type="text/javascript" src="<%=basePath%>view/admin/system/versionappIndex.js"></script>
-		
+
 	<script type="text/javascript">
 		var versionQueryUrl = "admin/versionapp/list";
 		var addVersionUrl = "admin/versionapp/addOrEdit";
 		var releaseVersionUrl = "admin/versionapp/release";
         var delVersionUrl = "admin/versionapp/delete";
 	</script>
+      <style type="text/css">
+          .datagrid .datagrid-pager {
+              float: right;
+              margin-top: 10;
+              margin-right: 20;
+              border-width: 0;
+          }
+      </style>
   </head>
-  
-  <body style="width:100%;height:100%;">
 
-    <table id="datagrid"></table>
+  <body style="width:100%;height:100%;margin: 0;background-color: #ebeff2;">
+
+  <div style="padding: 30px;">
+    <div style="box-shadow: 0px 0px 5px #ddd;background: #fff;overflow: hidden;padding-right: 20px;padding-bottom: 20px;border-radius: 4px;"  >
+        <table id="datagrid">
+        </table>
+    </div>
+  </div>
+
     
-    <div id="tool" style="padding:0px;height:auto;overflow: hidden;">
-    	<div style="padding: 8px 35px 8px 14px;text-shadow: 0 1px 0 rgba(255,255,255,0.5);background-color: #fcf8e3;border: 1px solid #fbeed5;-webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px;color: #666;">
-			<div style="line-height:30px">页面说明：本页面管理版本的系统信息，包括新增、修改功能。</div>
-			<a href="javascript:void(0)" class="easyui-linkbutton"  style="width:80px" onclick="openAddWin()">新增</a>
-		  	<a href="javascript:void(0)" class="easyui-linkbutton"  style="width:80px" onclick="openEditWin();">修改</a>
-            <a href="javascript:void(0)" class="easyui-linkbutton"  style="width:80px" onclick="releaseVersion();">发布</a>
-            <a href="javascript:void(0)" class="easyui-linkbutton"  style="width:80px" onclick="delVersion();">删除</a>
-	    	<select id="sk_equipment" class="easyui-combobox">
-				<option value="">全部</option>
-				<option value="android">安卓</option>
-				<option value="ios">IOS</option>
-			</select>
-            <input id="sk_searchkey" class="easyui-searchbox" data-options="prompt:'搜索关键字（应用名称）',searcher:doSearch" style="width:300px"></input>
-		</div>
+    <div id="tool" style="height:auto;overflow: hidden;padding-bottom: 5px">
+        <h1 style="color: #777; background: #fbfbfb; line-height: 50px; border-bottom: 1px solid #ebebeb; text-indent: 20px; font-size: 14px;">系统版本管理</h1>
+    	<div style="padding-left:27px">
+            <div style="float: left;">
+                <select id="sk_equipment" class="easyui-combobox" data-options="height:34">
+                    <option value="">全部</option>
+                    <option value="android">安卓</option>
+                    <option value="ios">IOS</option>
+                </select>
+                <input id="sk_searchkey" class="easyui-textbox" data-options="height:34,prompt:'搜索关键字（TODO）'"  style="width:300px"/>
+            </div>
+            <a href="javascript:void(0)" class="btn" style="background-color:#35b8e0;"  onclick="doSearch()">搜索</a>
+            <a href="javascript:void(0)" class="btn" style="background-color:#35b8e0;"  onclick="doSearch()">清空</a>
+            <a href="javascript:void(0)" class="btn" style="background-color:#35b8e0;"  onclick="doSearch()">导出</a>
+            <div style="float: right;padding-right: 20px;">
+                <a href="javascript:void(0)" class="btn"   onclick="openAddWin()">新增</a>
+                <a href="javascript:void(0)" class="btn"   onclick="openEditWin();">修改</a>
+                <a href="javascript:void(0)" class="btn"   onclick="releaseVersion();">发布</a>
+                <a href="javascript:void(0)" class="btn"  style="background-color: red" onclick="delVersion();">删除</a>
+            </div>
+        </div>
 	</div>
 	
 	<div id="window" class="easyui-window" title="版本信息编辑"
-        data-options="modal:true,closable:false,collapsible:false,minimizable:false,maximizable:false,resizable:false,closed:true"
+        data-options="modal:true,closable:true,collapsible:false,minimizable:false,maximizable:false,resizable:false,closed:true"
         style="width:550px;height:500px;padding:10px;">
         <form id="applyForm" action="" method="post">
         	<input type="hidden" id="id_input" name="id">

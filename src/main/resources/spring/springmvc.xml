@@ -55,7 +55,7 @@
 
 	<!--////////// 核心启动项 ////////////-->
 	<!-- 动态参数加载 -->
-	<bean id="iConfigService" class=" com.ich.config.service.impl.IRedisConfigServiceImpl"></bean>
+	<bean id="iConfigService" class=" com.ich.config.service.impl.IDatabaseConfigServiceImpl"></bean>
 	<!--<bean id="iConfigService" class=" com.ich.config.service.impl.ILocalConfigServiceImpl"></bean>-->
 	<bean class="com.ich.config.processor.IConfigProcessor">
 		<property name="iConfigService" ref="iConfigService"></property>

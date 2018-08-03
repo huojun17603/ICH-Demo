@@ -31,12 +31,7 @@
 	</bean>
 	<bean id="jedisClientSingle" class="com.ich.core.plug.jedis.impl.JedisClientSingle" />
 
- 	<task:annotation-driven />
-	<!--
- 	<task:scheduled-tasks>
-    	<task:scheduled ref="autoDataServiceImpl" method="autoAddData" cron="0/10 * * * * ?" />
-    </task:scheduled-tasks>
-    -->
+
 
 	<!-- 配置日志的数据回调实现 -->
 	<bean id="callbackservice" class="com.ich.log.service.impl.ILogCallbackServiceImpl"></bean>

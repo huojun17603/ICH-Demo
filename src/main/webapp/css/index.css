@@ -6,7 +6,18 @@ ul,li{list-style: none}
 .homeDivBorder{background: #fafafa;border: 1px solid #cfcfcf;clear: both;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;display: block;}
 .homeDivHead{border-radius: 2px 2px 0 0;border-bottom: 1px solid #cfcfcf;height: 42px;padding: 0 15px;line-height: 42px;background-color: #e8e8e8;}
 .homeDivBody{border-radius: 0 0 2px 2px;padding: 15px;border-bottom: 1px solid #b3b3b3;}
-
+.btn{
+    display: inline-block;
+    margin-left: 10px;
+    background: #5973c7;
+    color: #fff;
+    border-radius: 4px;
+    line-height: 34px;
+    padding: 0 20px;
+    font-size: 14px;
+    text-decoration: none;
+    font-family: "微软雅黑";
+}
 /* 搜索条件表单样式 */
 div,ul,li{padding: 0; margin: 0;}
 .gongn_p{background:#fff; border-bottom: 1px solid #e8e8e8; padding:12px 0; text-align: center;}
@@ -30,15 +41,15 @@ div,ul,li{padding: 0; margin: 0;}
 /* 给出4位汉字空间 */
 .fm_s {border: 0px solid #e32600; overflow: hidden; padding-top: 12px;}
 .fm_s li{padding:8px 0px 8px 0px; float:left; list-style: none; }
-.fm_s li label { text-align: right;  width:100px; display: inline-block;}
+.fm_s li label { text-align: right;  width:120px; display: inline-block; font-weight: bold; font-size: 12px;}
 /* 给出6位汉字空间 */
 .fm_m {border: 0px solid #e32600; overflow: hidden; padding-top: 12px;}
 .fm_m li{padding:8px 0px 8px 0px; float:left; list-style: none; }
-.fm_m li label { text-align: right;  width:140px; display: inline-block;}
+.fm_m li label { text-align: right;  width:160px; display: inline-block; font-weight: bold; font-size: 12px;}
 /* 给出8位汉字空间 */
 .fm_l {border: 0px solid #e32600; overflow: hidden; padding-top: 12px;}
 .fm_l li{padding:8px 0px 8px 0px; float:left; list-style: none; }
-.fm_l li label { text-align: right;  width:180px; display: inline-block;}
+.fm_l li label { text-align: right;  width:200px; display: inline-block; font-weight: bold; font-size: 12px;}
 
 /*一列一个Input*/
 .fm_1l{width:100%;}
